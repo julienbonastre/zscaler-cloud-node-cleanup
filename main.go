@@ -99,6 +99,11 @@ func setupClient() {
 			group.AwsRegion,
 			len(group.ECVMs),
 		)
+
+		if len(group.ECVMs) == 0 {
+			continue
+		}
+		
 		// Iterate all the .ecVMs within each group and print out their attributes such as name, operationalStatus, status
 		for _, ecVM := range group.ECVMs {
 			// Extract unique name for each ECVM based on last hyphenated string
