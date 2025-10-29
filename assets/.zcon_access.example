@@ -1,0 +1,6 @@
+{
+  "ZCON_USERNAME": "user@domain.com",
+  "ZCON_PASSWORD": "<password>",
+  "ZCON_API_KEY": "<zia-api-key>",
+  "ZCON_CLOUD": "zscalerthree"
+}
