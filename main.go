@@ -103,7 +103,7 @@ func setupClient() {
 		if len(group.ECVMs) == 0 {
 			continue
 		}
-		
+
 		// Iterate all the .ecVMs within each group and print out their attributes such as name, operationalStatus, status
 		for _, ecVM := range group.ECVMs {
 			// Extract unique name for each ECVM based on last hyphenated string
@@ -140,7 +140,7 @@ func setupClient() {
 				fmt.Printf("⚠️ ECVM %s is not ACTIVE... Queued for deletion\n", ecVM.Name)
 
 				if !isInDeletingState {
-					err := EcVMDelete(ctx, service, group.ID, ecVM.ID)
+					err := EcVMDelete(ctx, service, group.ID, ecVM)
 					if err != nil {
 						fmt.Printf("Error deleting EC VM []: %v", ecVM.Name, err)
 						return
@@ -153,12 +153,27 @@ func setupClient() {
 	}
 }
 
-func EcVMDelete(ctx context.Context, service *services.Service, ecGroupId int, ecVMID int) error {
-	if DRY_RUN_MODE {
-		fmt.Printf("[DRY_RUN] Action: Delete | Path: %s\n", fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVMID))
+func EcVMDelete(ctx context.Context, service *services.Service, ecGroupId int, ecVM ECVMs) error {
+	// Prompt for human confirmation before proceeding
+	fmt.Printf("\n⚠️⚠️⚠️ !! CONFIRM DELETION !!\n\tDo you want to delete ECVM ID %v from Group %d? [y/N]: ", ecVM.Name, ecGroupId)
+	var response string
+	fmt.Scanln(&response)
+
+	// Default to No if empty response or anything other than 'y' or 'yes'
+	response = strings.ToLower(strings.TrimSpace(response))
+	if response != "y" && response != "yes" {
+		fmt.Println("❌ Deletion cancelled by user")
 		return nil
 	}
-	err := service.Client.Delete(ctx, fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVMID))
+
+	fmt.Println("✅ Deletion confirmed by user, proceeding...")
+
+	if DRY_RUN_MODE {
+		fmt.Printf("[DRY_RUN] Action: Delete | Path: %s\n", fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
+		return nil
+	}
+	err := service.Client.Delete(ctx,
+		fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
 	return err
 }
 
