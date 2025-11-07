@@ -19,11 +19,15 @@ const (
 	ecGroupEndpoint = "/ecgroup"
 	//ecGroupLiteEndpoint = "/ecgroup/lite"
 	ENV_DRY_RUN_FLAG = "DRY_RUN"
+	JSON_PATH_FOLDER = "zscc-json-output"
 )
 
 var (
-	DRY_RUN_MODE = true
-	err          error
+	DRY_RUN_MODE     = true
+	err              error
+	JSON_PATH_PREFIX string
+	JSON_OUTPUT_PATH *string
+	JSON_RAW_BYTES   *[]byte
 )
 
 //go:embed assets/*
@@ -39,6 +43,22 @@ func main() {
 	}
 	fmt.Println("Starting Zscaler Cloud Node Cleanup")
 	fmt.Println("DRY_RUN_MODE:", DRY_RUN_MODE)
+
+	// Fetch cwd of the app
+	cwd, err := os.Getwd()
+	if err != nil {
+		log.Fatalf("Error getting current working directory: %v", err)
+	}
+
+	JSON_PATH_PREFIX = fmt.Sprintf("%s/%s", cwd, JSON_PATH_FOLDER)
+
+	// Confirm that JSON_PATH_PREFIX dir exists, or create if not
+	if _, err := os.Stat(JSON_PATH_PREFIX); os.IsNotExist(err) {
+		err = os.Mkdir(JSON_PATH_PREFIX, 0755)
+		if err != nil {
+			log.Fatalf("Error creating JSON_PATH_PREFIX directory: %v", err)
+		}
+	}
 
 	setupClient()
 }
@@ -83,7 +103,8 @@ func setupClient() {
 
 	ctx := context.Background()
 
-	ccgroups, err := EcGroupGetAllExtended(ctx, service)
+	var ccgroups []EcGroup
+	ccgroups, JSON_RAW_BYTES, err = EcGroupGetAllExtended(ctx, service)
 	if err != nil {
 		log.Fatalf("Error listing EC Groups: %v", err)
 	}
@@ -137,8 +158,9 @@ func setupClient() {
 			}
 
 			if ecVM.OperationalStatus == "INACTIVE" {
-				fmt.Printf("⚠️ ECVM %s is not ACTIVE... Queued for deletion\n", ecVM.Name)
-
+				currentTime := time.Now().Format("02/01/06 15:04:05 MST")
+				fmt.Printf("⚠️ ECVM %s is not ACTIVE... Queued for deletion (%s)\n", ecVM.Name, currentTime)
+				fmt.Printf("\t==Raw JSON Received ==> %s\n", getJsonOutputPath())
 				if !isInDeletingState {
 					err := EcVMDelete(ctx, service, group.ID, ecVM)
 					if err != nil {
@@ -156,29 +178,62 @@ func setupClient() {
 func EcVMDelete(ctx context.Context, service *services.Service, ecGroupId int, ecVM ECVMs) error {
 	// Prompt for human confirmation before proceeding
 	fmt.Printf("\n⚠️⚠️⚠️ !! CONFIRM DELETION !!\n\tDo you want to delete ECVM ID %v from Group %d? [y/N]: ", ecVM.Name, ecGroupId)
-	var response string
-	fmt.Scanln(&response)
-
-	// Default to No if empty response or anything other than 'y' or 'yes'
-	response = strings.ToLower(strings.TrimSpace(response))
-	if response != "y" && response != "yes" {
-		fmt.Println("❌ Deletion cancelled by user")
-		return nil
-	}
-
-	fmt.Println("✅ Deletion confirmed by user, proceeding...")
-
 	if DRY_RUN_MODE {
 		fmt.Printf("[DRY_RUN] Action: Delete | Path: %s\n", fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
 		return nil
+	} else {
+		var response string
+		fmt.Scanln(&response)
+
+		// Default to No if empty response or anything other than 'y' or 'yes'
+		response = strings.ToLower(strings.TrimSpace(response))
+		if response != "y" && response != "yes" {
+			fmt.Println("❌ Deletion cancelled by user")
+			return nil
+		}
+
+		fmt.Println("✅ Deletion confirmed by user, proceeding...")
+		//err := service.Client.Delete(ctx,
+		//	fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
+		//return err
 	}
-	err := service.Client.Delete(ctx,
-		fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
-	return err
+	return nil
 }
 
-func EcGroupGetAllExtended(ctx context.Context, service *services.Service) ([]EcGroup, error) {
+func EcGroupGetAllExtended(ctx context.Context, service *services.Service) ([]EcGroup, *[]byte, error) {
 	var ecgroups []EcGroup
-	err := common.ReadAllPages(ctx, service.Client, ecGroupEndpoint, &ecgroups)
-	return ecgroups, err
+	var rawResponse []interface{}
+
+	err := common.ReadAllPages(ctx, service.Client, ecGroupEndpoint, &rawResponse)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// Marshal the raw response to get the JSON bytes for debugging
+	rawJSON, err := json.Marshal(rawResponse)
+	if err != nil {
+		return nil, nil, err
+	}
+
+	// Unmarshal into the structured type
+	err = json.Unmarshal(rawJSON, &ecgroups)
+	if err != nil {
+		return nil, &rawJSON, err
+	}
+
+	return ecgroups, &rawJSON, nil
+}
+
+func getJsonOutputPath() string {
+	if JSON_OUTPUT_PATH == nil {
+		timestamp := time.Now().Unix()
+		outputPath := fmt.Sprintf("%s/ecgroups_%d.json", JSON_PATH_PREFIX, timestamp)
+		JSON_OUTPUT_PATH = &outputPath
+		err = os.WriteFile(outputPath, *JSON_RAW_BYTES, 0644)
+		if err != nil {
+			log.Fatalf("Error writing JSON output to file: %v", err)
+		}
+		fmt.Printf("First Init -- Raw JSON output written to: %s\n", outputPath)
+	}
+	return *JSON_OUTPUT_PATH
 }
