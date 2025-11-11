@@ -33,6 +33,17 @@ var (
 //go:embed assets/*
 var assets embed.FS
 
+func getPlatformIcon(platform string) string {
+	switch strings.ToUpper(platform) {
+	case "AWS":
+		return "\uf270" // AWS logo (Nerd Font - Material Design Icons)
+	case "GCP":
+		return "\ue7b2" // GCP logo (Nerd Font)
+	default:
+		return "\U000f015f" // Generic cloud icon (Nerd Font)
+	}
+}
+
 func main() {
 	// Check if flag is set in env and if it exists, set this to true, else false
 	if val, ok := os.LookupEnv(ENV_DRY_RUN_FLAG); ok {
@@ -114,7 +125,9 @@ func setupClient() {
 	// Extract out the top level list of all the Zscaler Cloud Connector Groups
 	for _, group := range ccgroups {
 		fmt.Printf(
-			"⊳ Group (%d) ==> %s [%s] with %d ECVMs\n",
+			"⊳ %s %s - Group (%d) ==> %s [%s] with %d ECVMs\n",
+			getPlatformIcon(group.Platform),
+			group.Platform,
 			group.ID,
 			group.Name,
 			group.AwsRegion,
