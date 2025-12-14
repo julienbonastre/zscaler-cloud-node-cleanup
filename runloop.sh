@@ -1,0 +1,1 @@
+while true; do DRY_RUN=1 ./ccnodecleanup; sleep 10; done | tee -a ./logs/zscc-cleanup.log

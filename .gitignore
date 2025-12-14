@@ -1,1 +1,4 @@
 .zcon_access
+
+logs/
+zscc-json-output/

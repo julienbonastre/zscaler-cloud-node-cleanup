@@ -1,7 +1,7 @@
 [
   {
     "id": 928265320,
-    "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70",
+    "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70",
     "deployType": "CLOUD",
     "fallBackToTls": false,
     "status": [
@@ -10,15 +10,15 @@
     ],
     "autoScale": true,
     "platform": "AWS",
-    "awsRegion": "AP_SOUTHEAST_2",
+    "awsRegion": "US_EAST_1",
     "location": {
       "id": 898381331,
-      "name": "test-au_apse2-ap-southeast-2-vpc-08069d9a0b33cfe1e"
+      "name": "test-us_use1-us-east-1-vpc-01234567890abcdef"
     },
     "ecVMs": [
       {
         "id": 894279614,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-hrKqb",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-hrKqb",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -44,7 +44,7 @@
       },
       {
         "id": 941969343,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-qmXlu",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-qmXlu",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -70,7 +70,7 @@
       },
       {
         "id": 611893721,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-xIAeT",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-xIAeT",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -95,7 +95,7 @@
       },
       {
         "id": 272273026,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-9dsaW",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-9dsaW",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -120,7 +120,7 @@
       },
       {
         "id": 673317173,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-N9PAi",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-N9PAi",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -145,7 +145,7 @@
       },
       {
         "id": 696027130,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-qDq9f",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-qDq9f",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -171,7 +171,7 @@
       },
       {
         "id": 640491833,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-kTCgl",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-kTCgl",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -196,7 +196,7 @@
       },
       {
         "id": 982374955,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-5fqdV",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-5fqdV",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -221,7 +221,7 @@
       },
       {
         "id": 174902207,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-tfXRQ",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-tfXRQ",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -247,7 +247,7 @@
       },
       {
         "id": 100962953,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-j3Dl4",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-j3Dl4",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -272,7 +272,7 @@
       },
       {
         "id": 809289808,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-AayK8",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-AayK8",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -298,7 +298,7 @@
       },
       {
         "id": 246139622,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-HUCOH",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-HUCOH",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -323,7 +323,7 @@
       },
       {
         "id": 128344214,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-StTp0",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-StTp0",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -349,7 +349,7 @@
       },
       {
         "id": 598420160,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-PZmuW",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-PZmuW",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -375,7 +375,7 @@
       },
       {
         "id": 447361387,
-        "name": "zs-cc-vpc-08069d9a0b33cfe1e-ap-southeast-2-zscc-test-cc-asg-1-91lr0e70-VM-VveeF",
+        "name": "zs-cc-vpc-01234567890abcdef-us-east-1-zscc-test-cc-asg-1-91lr0e70-VM-VveeF",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -402,7 +402,7 @@
   },
   {
     "id": 130827167,
-    "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm",
+    "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm",
     "deployType": "CLOUD",
     "fallBackToTls": false,
     "status": [
@@ -411,15 +411,15 @@
     ],
     "autoScale": true,
     "platform": "AWS",
-    "awsRegion": "AP_SOUTHEAST_2",
+    "awsRegion": "US_WEST_2",
     "location": {
       "id": 383089403,
-      "name": "production-au_apse2-ap-southeast-2-vpc-045d07ebb28f9ffc4"
+      "name": "production-us_usw2-us-west-2-vpc-0fedcba9876543210"
     },
     "ecVMs": [
       {
         "id": 771298278,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-KqsfE",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-KqsfE",
         "status": [
           "AUTO_SCALE"
         ],
@@ -442,7 +442,7 @@
       },
       {
         "id": 626708192,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-1fQrU",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-1fQrU",
         "status": [
           "AUTO_SCALE"
         ],
@@ -465,7 +465,7 @@
       },
       {
         "id": 713575434,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-YRQI8",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-YRQI8",
         "status": [
           "AUTO_SCALE"
         ],
@@ -488,7 +488,7 @@
       },
       {
         "id": 607605913,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-GJdRZ",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-GJdRZ",
         "status": [
           "AUTO_SCALE"
         ],
@@ -511,7 +511,7 @@
       },
       {
         "id": 569847415,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-SA11k",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-SA11k",
         "status": [
           "AUTO_SCALE"
         ],
@@ -534,7 +534,7 @@
       },
       {
         "id": 614374988,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-uqPUd",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-uqPUd",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -559,7 +559,7 @@
       },
       {
         "id": 509803072,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-8hlg5",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-8hlg5",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -584,7 +584,7 @@
       },
       {
         "id": 770108618,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-rIZg6",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-rIZg6",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -610,7 +610,7 @@
       },
       {
         "id": 858763744,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-9THmZ",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-9THmZ",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -636,7 +636,7 @@
       },
       {
         "id": 447123038,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-jmf6z",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-jmf6z",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -662,7 +662,7 @@
       },
       {
         "id": 662822714,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-BjE42",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-BjE42",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -687,7 +687,7 @@
       },
       {
         "id": 150004736,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-mCKtN",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-mCKtN",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -713,7 +713,7 @@
       },
       {
         "id": 945931982,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-7Ecaj",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-7Ecaj",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -739,7 +739,7 @@
       },
       {
         "id": 615274987,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-XfRWd",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-XfRWd",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -765,7 +765,7 @@
       },
       {
         "id": 712973410,
-        "name": "zs-cc-vpc-045d07ebb28f9ffc4-ap-southeast-2-zscc-prod-cc-asg-1-3ofteftm-VM-UfuyO",
+        "name": "zs-cc-vpc-0fedcba9876543210-us-west-2-zscc-prod-cc-asg-1-3ofteftm-VM-UfuyO",
         "status": [
           "REGISTERED",
           "PKG_REPO_REGISTERED",
@@ -805,7 +805,7 @@
     "awsRegion": "US_EAST_1",
     "location": {
       "id": 336702194,
-      "name": "production-au_use1-us-east-1-vpc-0ef2428df7e6c651c"
+      "name": "production-us_use1-us-east-1-vpc-0ef2428df7e6c651c"
     },
     "ecVMs": [
       {

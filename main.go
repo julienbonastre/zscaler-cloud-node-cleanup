@@ -124,8 +124,9 @@ func setupClient() {
 
 	// Extract out the top level list of all the Zscaler Cloud Connector Groups
 	for _, group := range ccgroups {
+		fmt.Println("########################################")
 		fmt.Printf(
-			"⊳ %s %s - Group (%d) ==> %s [%s] with %d ECVMs\n",
+			"\n### ⊳ %s %s - Group (%d) ==> %s [%s] with %d ECVMs ###\n\n",
 			getPlatformIcon(group.Platform),
 			group.Platform,
 			group.ID,
@@ -185,14 +186,16 @@ func setupClient() {
 				}
 			}
 		}
+		fmt.Println()
 	}
 }
 
 func EcVMDelete(ctx context.Context, service *services.Service, ecGroupId int, ecVM ECVMs) error {
+	var err error
 	// Prompt for human confirmation before proceeding
 	fmt.Printf("\n⚠️⚠️⚠️ !! CONFIRM DELETION !!\n\tDo you want to delete ECVM ID %v from Group %d? [y/N]: ", ecVM.Name, ecGroupId)
 	if DRY_RUN_MODE {
-		fmt.Printf("[DRY_RUN] Action: Delete | Path: %s\n", fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
+		fmt.Printf("\n\t❇️ [DRY_RUN] Action: Delete | Path: %s\n", fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
 		return nil
 	} else {
 		var response string
@@ -205,12 +208,16 @@ func EcVMDelete(ctx context.Context, service *services.Service, ecGroupId int, e
 			return nil
 		}
 
-		fmt.Println("✅ Deletion confirmed by user, proceeding...")
-		//err := service.Client.Delete(ctx,
-		//	fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
-		//return err
+		fmt.Println("✅🚮 Deletion confirmed by user, proceeding...")
+		err = service.Client.Delete(ctx,
+			fmt.Sprintf("%s/%d/vm/%d", ecGroupEndpoint, ecGroupId, ecVM.ID))
+
+		// Adding in offset time purely
+		sleepTime := time.Second * 30
+		fmt.Printf("\n\t... Sleeping for %v secs to offset deletions ...", sleepTime.Seconds())
+		time.Sleep(sleepTime)
 	}
-	return nil
+	return err
 }
 
 func EcGroupGetAllExtended(ctx context.Context, service *services.Service) ([]EcGroup, *[]byte, error) {
@@ -246,7 +253,7 @@ func getJsonOutputPath() string {
 		if err != nil {
 			log.Fatalf("Error writing JSON output to file: %v", err)
 		}
-		fmt.Printf("First Init -- Raw JSON output written to: %s\n", outputPath)
+		//fmt.Printf("\t>> First Init -- Raw JSON output written to: %s\n", outputPath)
 	}
 	return *JSON_OUTPUT_PATH
 }
